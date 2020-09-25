@@ -24,12 +24,12 @@ const Tabbar = (props) => {
       router: homeTabs.home_drawer,
       isShow: true,
     },
-    {
-      iconName: 'search',
-      name: t('common:text_shop'),
-      router: homeTabs.shop,
-      isShow: true,
-    },
+    // {
+    //   iconName: 'search',
+    //   name: t('common:text_shop'),
+    //   router: homeTabs.shop,
+    //   isShow: true,
+    // },
     {
       iconName: 'heart',
       name: t('common:text_wishList'),

@@ -48,8 +48,8 @@ class LoadingScreen extends React.Component<Props> {
       // Fetch categories
       handleFetchCategories();
       // const router = isGettingStart ? rootSwitch.start : configs.requireLogin && !isLogin ? rootSwitch.auth : rootSwitch.main;
-      // navigation.navigate(router);
-      SplashScreen.hide();
+      navigation.navigate(router);
+      // SplashScreen.hide();
     } catch (e) {
       console.error(e);
     }

@@ -14,7 +14,7 @@
     "text_me": "Me",
     "text_refine": "Refine",
     "text_product_description": "Description",
-    "text_product_attribute": "Additional information",
+    "text_product_attribute": "CUSTOMIZE",
     "text_product_review": "All Reviews",
     "text_product_review_form": "Write review",
     "text_me_screen": "Me",
@@ -110,7 +110,7 @@
     "text_refine": "Refine",
 
     "text_description": "Description",
-    "text_information": "Additional information",
+    "text_information": "CUSTOMIZE",
     "text_reviews": "Reviews",
     "text_title_like": "You may also like",
     "text_stock": "In-stock",
