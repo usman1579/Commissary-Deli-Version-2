@@ -1,0 +1,6 @@
+module Pods_rn_oreo_rn_oreoTests {
+  umbrella header "Pods-rn_oreo-rn_oreoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
