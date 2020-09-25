@@ -23,15 +23,16 @@ class AttributeVariable extends React.Component {
         attr.get('id') === attribute.get('id') &&
         attr.get('name') === attribute.get('name'),
     );
-
+       // <Text>
+       //    {attribute.get('name')}:{' '}
+       //    <Text colorSecondary>
+       //      {attributeSelected ? attributeSelected.get('option') : ''}
+       //    </Text>
+       //  </Text>
     return (
       <>
-        <Text>
-          {attribute.get('name')}:{' '}
-          <Text colorSecondary>
-            {attributeSelected ? attributeSelected.get('option') : ''}
-          </Text>
-        </Text>
+ 
+        
         <ScrollView
           style={styles.attribute}
           horizontal
