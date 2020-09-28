@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">297766130098-m68tu9o0b0kgoi5aut7k3mepd1lotbn3.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://oreo-240808.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">297766130098</string>
+    <string name="google_api_key" translatable="false">AIzaSyDbDBW0eYDdxENtzyRCjujIEuRiHtWMunA</string>
+    <string name="google_app_id" translatable="false">1:297766130098:android:0a2ac1a0116072653fd4ab</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDbDBW0eYDdxENtzyRCjujIEuRiHtWMunA</string>
+    <string name="google_storage_bucket" translatable="false">oreo-240808.appspot.com</string>
+    <string name="project_id" translatable="false">oreo-240808</string>
+</resources>

@@ -51,7 +51,7 @@ goog.addDependency('../../../lib/media/playhead.js', ['shaka.media.MediaSourcePl
 goog.addDependency('../../../lib/media/playhead_observer.js', ['shaka.media.IPlayheadObserver', 'shaka.media.PlayheadObserverManager'], ['shaka.util.IReleasable']);
 goog.addDependency('../../../lib/media/presentation_timeline.js', ['shaka.media.PresentationTimeline'], ['goog.asserts', 'shaka.log', 'shaka.media.SegmentReference']);
 goog.addDependency('../../../lib/media/region_observer.js', ['shaka.media.RegionObserver'], ['shaka.media.RegionTimeline']);
-goog.addDependency('../../../lib/media/region_timeline.js', ['shaka.media.RegionTimeline'], ['shaka.util.IReleasable']);
+goog.addDependency('../../../lib/media/region_timeline.js', ['shaka.media.RegionTimeline'], ['shaka.util.IReleasable', 'shaka.util.Timer']);
 goog.addDependency('../../../lib/media/segment_index.js', ['shaka.media.SegmentIndex'], ['goog.asserts', 'shaka.log', 'shaka.media.SegmentReference', 'shaka.util.IDestroyable']);
 goog.addDependency('../../../lib/media/segment_reference.js', ['shaka.media.InitSegmentReference', 'shaka.media.SegmentReference'], ['goog.asserts']);
 goog.addDependency('../../../lib/media/stall_detector.js', ['shaka.media.StallDetector', 'shaka.media.StallDetector.Implementation', 'shaka.media.StallDetector.MediaElementImplementation'], []);

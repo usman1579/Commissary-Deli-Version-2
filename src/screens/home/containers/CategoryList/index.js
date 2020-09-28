@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'recompose';
 
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet,Text} from 'react-native';
 import {withNavigation} from '@react-navigation/compat';
 import {withTranslation} from 'react-i18next';
 import {categorySelector} from 'src/modules/category/selectors';
@@ -79,6 +79,7 @@ class CategoryList extends Component {
 
     return (
       <>
+      <Text>Hello</Text>
         {fields.disable_heading && (
           <Container disable={headerDisable}>
             <Heading

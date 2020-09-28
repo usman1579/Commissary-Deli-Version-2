@@ -2085,7 +2085,7 @@ shaka.hls.HlsParser.prototype.guessMimeType_ =
 
   if (contentType == ContentType.TEXT) {
     // The extension map didn't work.
-    if (!codecs || codecs == 'vtt') {
+    if (!codecs || codecs == 'vtt' || codecs == 'wvtt') {
       // If codecs is 'vtt', it's WebVTT.
       // If there was no codecs string, assume HLS text streams are WebVTT.
       return 'text/vtt';
@@ -2370,10 +2370,12 @@ shaka.hls.HlsParser.widevineDrmParser_ = function(drmTag) {
 
   let keyId = drmTag.getAttributeValue('KEYID');
   if (keyId) {
+    const keyIdLowerCase = keyId.toLowerCase();
     // This value should begin with '0x':
-    goog.asserts.assert(keyId.startsWith('0x'), 'Incorrect KEYID format!');
+    goog.asserts.assert(
+        keyIdLowerCase.startsWith('0x'), 'Incorrect KEYID format!');
     // But the output should not contain the '0x':
-    drmInfo.keyIds = [keyId.substr(2).toLowerCase()];
+    drmInfo.keyIds = [keyIdLowerCase.substr(2)];
   }
   return drmInfo;
 };

@@ -3,6 +3,7 @@ import NavigationServices from './navigation';
 import {mainStack} from 'src/config/navigator';
 
 function action(data) {
+  console.log('DATA',data)
   if (data && data.type && data.id) {
     const {type, id} = data;
     switch (type) {
@@ -28,4 +29,6 @@ function action(data) {
     }
   }
 }
+
+
 export default action;

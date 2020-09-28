@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 
 import {connect} from 'react-redux';
 import {DrawerActions} from '@react-navigation/native';
@@ -28,6 +28,7 @@ import Button from './home/containers/Button';
 import Vendors from './home/containers/Vendors';
 import Search from './home/containers/Search';
 import Divider from './home/containers/Divider';
+import Locator from './home/containers/Locator'
 
 const {width} = Dimensions.get('window');
 
@@ -45,6 +46,7 @@ const containers = {
   vendors: Vendors,
   search: Search,
   divider: Divider,
+  // Locator:Locator
 };
 
 const widthComponent = (spacing) => {
@@ -70,8 +72,17 @@ const widthComponent = (spacing) => {
   return width - marginLeft - marginRight - paddingLeft - paddingRight;
 };
 
-class HomeScreen extends React.Component {
+class HomeScreen extends Component {
+
+  constructor(){
+    super()
+    console.log('Constructor')
+    this.state={
+    }
+  }  
+
   renderContainer(config) {
+    console.log("Hello world!");
     const Container = containers[config.type];
     if (!Container) {
       return null;
@@ -84,7 +95,9 @@ class HomeScreen extends React.Component {
         />
       </View>
     );
-  }
+  };
+
+
 
   render() {
     // const { category, product } = this.props;
@@ -107,15 +120,10 @@ class HomeScreen extends React.Component {
           centerComponent={<Logo />}
           rightComponent={<CartIcon />}
         />
-
-                  <Text>
-                    
-                      {"\nLocation"}
-                    </Text>
-
         <ScrollView
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
+             <Locator/>
           {config.map((data) => this.renderContainer(data))}
         </ScrollView>
         <ModalHomePopup />
