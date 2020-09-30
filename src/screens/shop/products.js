@@ -33,6 +33,7 @@ import {getProducts} from 'src/modules/product/service';
 import {margin} from 'src/components/config/spacing';
 import {mainStack, homeTabs} from 'src/config/navigator';
 import {categorySelector} from 'src/modules/category/selectors';
+import { LocationSelector } from '../../modules/Locator/selector';
 
 const findCategory = (categoryId = '', lists = []) => {
   if (!categoryId || !lists || lists.length < 1) {
@@ -80,6 +81,7 @@ class ProductsScreen extends React.Component {
   }
 
   componentDidMount() {
+    
     this.fetchProducts();
   }
 
@@ -140,7 +142,15 @@ class ProductsScreen extends React.Component {
 
   fetchProducts = async (page = this.state.page) => {
     try {
-      const dataGet = await this.getData(page);
+      const FilterData = await this.getData(page);
+      var Sid=this.props.Locator.selectedLocation.id 
+      // console.log('DATa of Products', FilterData)
+
+      var dataGet= FilterData .filter(x => {
+        return x.tags.find(y=> y.id == Sid)
+      })
+
+      // console.log(' FilterData ',  dataGet );
 
       if (dataGet.length <= 4 && dataGet.length > 0) {
         this.setState((preState) => {
@@ -273,11 +283,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   const {data} = categorySelector(state);
+  // const  Locator = LocationSelector(state);
   return {
     sortBy: sortBySelector(state),
     filterBy: filterBySelector(state),
     lang: languageSelector(state),
     categories: data,
+    Locator: LocationSelector(state),
   };
 };
 

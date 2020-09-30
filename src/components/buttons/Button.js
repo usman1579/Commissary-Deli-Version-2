@@ -210,15 +210,11 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 3,
-    backgroundColor:
-      type === 'solid' ? theme.Button.backgroundColor : 'transparent',
+    backgroundColor:'#1d3778',
     minHeight: size === 'small' ? 34 : 46,
     paddingHorizontal: 12,
     borderWidth: type !== 'clear' ? 1 : 0,
-    borderColor:
-      type === 'outline'
-        ? theme.Button.outlineBorderColor
-        : theme.Button.borderColor,
+    borderColor:'#1d3778',
   }),
   container: {
     // borderRadius: 3,

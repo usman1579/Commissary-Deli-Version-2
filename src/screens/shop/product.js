@@ -273,7 +273,7 @@ class Product extends Component {
             product_id={product.get('id')}
             url={product.get('permalink')}
             name_product={product.get('name')}
-            height={HEADER_MAX_HEIGHT}
+            height={HEADER_MAX_HEIGHT/2+50}
           />
         }
         footerElement={
@@ -288,7 +288,7 @@ class Product extends Component {
             />
           )
         }
-        heightViewImage={HEADER_MAX_HEIGHT}>
+        heightViewImage={HEADER_MAX_HEIGHT/2+50}>
         <Container style={styles.container}>
           <View style={styles.viewCategoryRating}>
             <CategoryName product={product} style={styles.textCategory} />
@@ -347,7 +347,7 @@ class Product extends Component {
             type="underline"
           />
 
-          {product.get('attributes') && product.get('attributes').size ? (
+          {/*product.get('attributes') && product.get('attributes').size ? (
             <ListItem
               title={t('catalog:text_information')}
               onPress={() =>
@@ -359,7 +359,7 @@ class Product extends Component {
               chevron
               type="underline"
             />
-          ) : null}
+          ) : null*/}
 
           {configs.get('toggleReviewProduct') ? (
             <ListItem

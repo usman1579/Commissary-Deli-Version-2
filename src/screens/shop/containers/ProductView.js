@@ -30,7 +30,7 @@ const widthImage = (col = 1) => {
   return (widthFlatList - widthDistantImage) / col;
 };
 const heightImage = (w = 168) => {
-  return (w * 200) / 168;
+  return (w * 90) / 120;
 };
 
 class ProductView extends React.Component {

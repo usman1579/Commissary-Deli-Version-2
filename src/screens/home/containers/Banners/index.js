@@ -17,6 +17,7 @@ import {padding} from 'src/components/config/spacing';
 import {colBanner, typeViewBanner} from './config';
 
 import action from 'src/utils/action';
+import { LocationSelector } from '../../../../modules/Locator/selector';
 
 const {width} = Dimensions.get('window');
 
@@ -25,6 +26,18 @@ const initHeader = {
 };
 
 class Banners extends React.Component {
+
+
+  OnPress = (data) => {
+    const {Locator} = this.props;
+    if(Locator.selectedLocation.name == ''){
+      alert('Please Select Location')
+    }
+    else{
+      action(data)
+    }
+  }
+  
   render() {
     const {layout, fields, widthComponent, language, t} = this.props;
     if (
@@ -100,7 +113,7 @@ class Banners extends React.Component {
               radius={radius}
               box={valueBox}
               pad={pad}
-              clickBanner={(data) => action(data)}
+              clickBanner={(data) => this.OnPress(data)}
               language={language}
             />
           )}
@@ -118,6 +131,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   language: languageSelector(state),
+  Locator: LocationSelector(state),
 });
 
 Banners.defaultProps = {

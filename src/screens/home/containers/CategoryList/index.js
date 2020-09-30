@@ -79,7 +79,6 @@ class CategoryList extends Component {
 
     return (
       <>
-      <Text>Hello</Text>
         {fields.disable_heading && (
           <Container disable={headerDisable}>
             <Heading

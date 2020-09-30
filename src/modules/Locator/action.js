@@ -12,12 +12,6 @@ export function fetchLocation() {
 }
 
 export function setLocation(label) {
-   
-    // const data ={
-    //     "name":label,
-    //     "id":id
-    // }
-    // console.log('Set Location',data)
     return {
       type: Actions.SET_LOCATION,
       payload:label
