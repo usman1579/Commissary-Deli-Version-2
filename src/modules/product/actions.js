@@ -12,6 +12,7 @@ type Action = {
  * @returns {{type: string, payload: {data: array}}}
  */
 export function fetchProducts(data: Array<>): Action {
+  console.log('Fetch Product')
   return {
     type: Actions.FETCH_PRODUCT_SUCCESS,
     payload: {

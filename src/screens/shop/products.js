@@ -107,11 +107,11 @@ class ProductsScreen extends React.Component {
   getData = (page) => {
     const {sortBy, filterBy, lang, route} = this.props;
     const {category} = this.state;
-
+    console.log('100 items')
     const query = Map({
       status: 'publish',
       lang: lang,
-      per_page: 4,
+      per_page: 100,
       page: page,
     })
       .merge(sortBy.get('query'))
@@ -144,20 +144,20 @@ class ProductsScreen extends React.Component {
     try {
       const FilterData = await this.getData(page);
       var Sid=this.props.Locator.selectedLocation.id 
-      // console.log('DATa of Products', FilterData)
+      // console.log('DATa of Products', Sid)
 
-      var dataGet= FilterData .filter(x => {
+      var dataGet= await FilterData .filter(x => {
         return x.tags.find(y=> y.id == Sid)
       })
 
       // console.log(' FilterData ',  dataGet );
 
-      if (dataGet.length <= 4 && dataGet.length > 0) {
+      if (dataGet.length <= 100 && dataGet.length > 0) {
         this.setState((preState) => {
           return {
             loading: false,
             refreshing: false,
-            loadingMore: dataGet.length === 4,
+            loadingMore: dataGet.length === 100,
             data: page === 1 ? dataGet : concat(preState.data, dataGet),
           };
         });
