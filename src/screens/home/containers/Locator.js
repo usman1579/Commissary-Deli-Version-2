@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { clearCart } from '../../../modules/cart/actions';
 
 
+
 class Locator extends Component {
     constructor() {
         super()
@@ -28,7 +29,7 @@ class Locator extends Component {
             "Empty your cart and change locations?",
             [
                 {
-                    text: "No!",
+                    text: "Stay",
                     onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                 },
@@ -49,16 +50,20 @@ class Locator extends Component {
     render() {
         const { Locator } = this.props;
         const Loc = Locator.Location;
+
+
+        
         return (
 
             <>
-                <View style={styles.Shadow}>
+                <View >
                     <TouchableOpacity
-                        style={{ height: 40, paddingHorizontal: 20, borderRadius: 5, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', alignSelf: "center", marginVertical: 10 }}
+                        style={{ height: 40, paddingVertical: 2, paddingHorizontal: 20, borderRadius: 5, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', alignSelf: "center", marginVertical: 10 }}
                         onPress={() => this.setState({
                             visible: true
                         })}>
-                        <Text style={{ color: 'black', fontWeight: 'bold' }}>{Locator.selectedLocation.name == '' ? 'Please select Location' : Locator.selectedLocation.name}</Text>
+                        <Text style={{ color: 'lightgrey', fontSize: 12 }}>Location </Text>
+                        <Text style={{ color: '#657280', fontWeight: 'bold' }}>{Locator.selectedLocation.name == '' ? 'Please select Location' : Locator.selectedLocation.name} &#9660;</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -70,12 +75,12 @@ class Locator extends Component {
                         this.setState({ visible: false })
                     }}>
                     <View style={styles.modalBackground}>
-                        <View style={{ height: '40%', width: '95%', backgroundColor: 'white', borderRadius: 10 }}>
+                        <View style={{ height: '40%', width: '95%', backgroundColor: '#ffffff94', borderRadius: 10 }}>
                             <TouchableOpacity
                                 onPress={() => this.setState({ visible: false })}
-                                style={{ height: 30, width: 60, justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgrey', alignSelf: 'flex-end' }}>
-                                <Text style={{ color: 'black' }}>
-                                    Close
+                                style={{ height: 30, width: 30, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignSelf: 'flex-end' }}>
+                                <Text style={{ color: 'white', fontWeight: 'bold' }}>
+                                    X
               </Text>
                             </TouchableOpacity>
 
@@ -87,7 +92,7 @@ class Locator extends Component {
                                         <View style={styles.Shadow}>
                                             <TouchableOpacity
                                              onPress={()=>  this.changeLocation(x)}
-                                                style={{ justifyContent: 'center', alignItems: 'center', height: 40, width: 200, borderRadius: 4,marginTop:10, backgroundColor: x.name == Locator.selectedLocation.name ? 'lightgrey' : 'white', alignSelf: 'center' }}>
+                                                style={{ justifyContent: 'center', alignItems: 'center', height: 40, width: 200, borderRadius: 4,marginTop:10, backgroundColor: x.name == Locator.selectedLocation.name ? '#cae3fc' : 'white', alignSelf: 'center' }}>
                                                 <Text style={{ fontSize: 14, fontWeight: 'bold', color: 'black' }}>
                                                     {x.name}
                                                 </Text>
@@ -99,7 +104,7 @@ class Locator extends Component {
                                 
                             </ScrollView>
 
-                            <Text style={{ alignSelf: 'center', position: 'absolute', bottom: 5, alignItems: 'center', fontSize: 10, color: 'black' }}> Note: change Location will empty your cart </Text>
+                            <Text style={{ padding: 4, backgroundColor: '#fff', alignSelf: 'center', position: 'absolute', bottom: 5, alignItems: 'center', fontSize: 10, color: 'black' }}> Note: change Location will empty your cart </Text>
 
                         </View>
                     </View>
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        backgroundColor: '#00000040',
+        backgroundColor: '#ffffff94',
     },
     Shadow: {
         shadowColor: "#000",
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.25,
+        shadowOpacity: 0.125,
         shadowRadius: 3.84,
 
         elevation: 5
