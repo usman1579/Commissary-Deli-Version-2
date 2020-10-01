@@ -144,13 +144,13 @@ class ProductsScreen extends React.Component {
       // const dataGet = await this.getData(page);
       const FilterData = await this.getData(page);
       var Sid=this.props.Locator.selectedLocation.id 
-      console.log('DATa of Products', FilterData)
+      // console.log('DATa of Products', FilterData)
 
       var dataGet= FilterData .filter(x => {
         return x.tags.find(y=> y.id == Sid)
       })
 
-      console.log(' FilterData ',  dataGet );
+      // console.log(' FilterData ',  dataGet );
 
       if (dataGet.length <= 100 && dataGet.length > 0) {
         this.setState((preState) => {

@@ -5,6 +5,7 @@ import { fetchLocation, setLocation } from '../../../modules/Locator/action';
 import { LocationSelector, setLocationSelector } from '../../../modules/Locator/selector';
 import { ScrollView } from 'react-native-gesture-handler';
 import { clearCart } from '../../../modules/cart/actions';
+import { cartSelector } from '../../../modules/cart/selectors';
 
 
 
@@ -23,20 +24,24 @@ class Locator extends Component {
     }
 
     changeLocation = (x) => {
-
-        Alert.alert(
-            "Warning",
-            "Empty your cart and change locations?",
-            [
-                {
-                    text: "Stay",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                },
-                { text: "OK", onPress: () => this.OkChange(x) }
-            ],
-            { cancelable: false }
-        );
+        var cart= this.props.data 
+        if(Object.keys(cart).length<1){
+            this.OkChange(x)
+        }else{
+            Alert.alert(
+                "Warning",
+                "Empty your cart and change locations?",
+                [
+                    {
+                        text: "Stay",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                    },
+                    { text: "OK", onPress: () => this.OkChange(x) }
+                ],
+                { cancelable: false }
+            );
+        }
     }
 
     OkChange = (x) => {
@@ -49,12 +54,8 @@ class Locator extends Component {
 
     render() {
         const { Locator } = this.props;
-        const Loc = Locator.Location;
-
-
-        
+        const Loc = Locator.Location;        
         return (
-
             <>
                 <View >
                     <TouchableOpacity
@@ -109,18 +110,6 @@ class Locator extends Component {
                         </View>
                     </View>
                 </Modal>
-                {/* <Picker
-                    onValueChange={(label, value) => {
-                        this.changeLocation(label, value)
-                    }}
-                    selectedValue={this.state.selectedName}>
-                    {Loc.map(x => {
-                        return (
-                            <Picker.Item label={x.name} value={x.id} />
-                        )
-                    })}
-                </Picker> */}
-
             </>
         )
     }
@@ -128,7 +117,8 @@ class Locator extends Component {
 
 const mapStateToProps = (state) => ({
     Locator: LocationSelector(state),
-    selectedLocation: setLocationSelector(state)
+    selectedLocation: setLocationSelector(state),
+    data: cartSelector(state).toJS(),
 });
 
 export default connect(mapStateToProps)(Locator);
@@ -150,7 +140,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.125,
         shadowRadius: 3.84,
-
         elevation: 5
     }
 });
