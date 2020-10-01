@@ -1,5 +1,0 @@
-export const GET_LOCATION = 'location/GET_LOCATION';
-export const GET_LOCATION_SUCCESS = 'location/GET_LOCATION_SUCCESS';
-export const GET_LOCATION_ERROR = 'location/GET_LOCATION_ERROR';
-export const SET_LOCATION = 'SET_LOCATION'
-export const SET_LOCATION_ERROR = 'SET_LOCATION_ERROR'
