@@ -30,21 +30,21 @@ class GetStartSwiper extends React.Component {
     const position = Animated.divide(scrollX, width);
 
     const data = [
-      {
-        image: require('src/assets/images/getting-start/get-start-1.png'),
-        title: t('getting:text_title_1'),
-        subtitle: t('getting:text_subtitle_1'),
-      },
-      {
-        image: require('src/assets/images/getting-start/get-start-2.png'),
-        title: t('getting:text_title_2'),
-        subtitle: t('getting:text_subtitle_2'),
-      },
-      {
-        image: require('src/assets/images/getting-start/get-start-3.png'),
-        title: t('getting:text_title_3'),
-        subtitle: t('getting:text_subtitle_3'),
-      },
+      // {
+      //   image: require('src/assets/images/getting-start/get-start-1.png'),
+      //   title: t('getting:text_title_1'),
+      //   subtitle: t('getting:text_subtitle_1'),
+      // },
+      // {
+      //   image: require('src/assets/images/getting-start/get-start-2.png'),
+      //   title: t('getting:text_title_2'),
+      //   subtitle: t('getting:text_subtitle_2'),
+      // },
+      // {
+      //   image: require('src/assets/images/getting-start/get-start-3.png'),
+      //   title: t('getting:text_title_3'),
+      //   subtitle: t('getting:text_subtitle_3'),
+      // },
     ];
     return (
       <>

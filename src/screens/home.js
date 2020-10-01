@@ -76,13 +76,13 @@ class HomeScreen extends Component {
 
   constructor(){
     super()
-    // console.log('Constructor')
+    console.log('Constructor')
     this.state={
     }
   }  
 
   renderContainer(config) {
-    // console.log("Hello world!");
+    console.log("Hello world!");
     const Container = containers[config.type];
     if (!Container) {
       return null;

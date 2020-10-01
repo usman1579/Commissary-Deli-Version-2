@@ -128,6 +128,10 @@ const ItemDefault = React.memo((props) => {
           type={type}
           style={styles.textPrice}
         />
+
+        <Text>{"(per lb)"}</Text>
+
+        
         {configs.get('toggleReviewProduct') &&
         configs.get('toggleRatingProduct') ? (
           <View style={styles.viewFooter}>

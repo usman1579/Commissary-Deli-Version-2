@@ -114,7 +114,7 @@ class ProductVariable extends React.Component {
 const styles = StyleSheet.create({
   viewClear: {
     position: 'absolute',
-    top: 1,
+    top: -20,
     right: 0,
   },
   atr: {

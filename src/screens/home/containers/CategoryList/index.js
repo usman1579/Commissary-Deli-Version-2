@@ -20,7 +20,7 @@ import {padding} from 'src/components/config/spacing';
 import {typeShowCategory} from 'src/config/category';
 
 const initHeader = {
-  style: {},
+  style: { textTransform: 'capitalize'},
 };
 
 const {width} = Dimensions.get('window');
@@ -79,6 +79,7 @@ class CategoryList extends Component {
 
     return (
       <>
+      <Text>Hello</Text>
         {fields.disable_heading && (
           <Container disable={headerDisable}>
             <Heading

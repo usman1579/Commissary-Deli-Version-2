@@ -41,7 +41,7 @@ const get = (url, options = {}) => {
           reject(new Error(data.message));
         } else {
           resolve(data);
-          console.log('Data in API fetch',data)
+          console.log('dataaaa',data)
         }
       })
       .catch((error) => {

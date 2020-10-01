@@ -81,7 +81,6 @@ class ProductsScreen extends React.Component {
   }
 
   componentDidMount() {
-    
     this.fetchProducts();
   }
 
@@ -107,7 +106,7 @@ class ProductsScreen extends React.Component {
   getData = (page) => {
     const {sortBy, filterBy, lang, route} = this.props;
     const {category} = this.state;
-    console.log('100 items')
+
     const query = Map({
       status: 'publish',
       lang: lang,
@@ -142,15 +141,16 @@ class ProductsScreen extends React.Component {
 
   fetchProducts = async (page = this.state.page) => {
     try {
+      // const dataGet = await this.getData(page);
       const FilterData = await this.getData(page);
       var Sid=this.props.Locator.selectedLocation.id 
-      // console.log('DATa of Products', Sid)
+      console.log('DATa of Products', FilterData)
 
-      var dataGet= await FilterData .filter(x => {
+      var dataGet= FilterData .filter(x => {
         return x.tags.find(y=> y.id == Sid)
       })
 
-      // console.log(' FilterData ',  dataGet );
+      console.log(' FilterData ',  dataGet );
 
       if (dataGet.length <= 100 && dataGet.length > 0) {
         this.setState((preState) => {
@@ -283,7 +283,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   const {data} = categorySelector(state);
-  // const  Locator = LocationSelector(state);
   return {
     sortBy: sortBySelector(state),
     filterBy: filterBySelector(state),

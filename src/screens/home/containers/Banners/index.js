@@ -27,8 +27,7 @@ const initHeader = {
 
 class Banners extends React.Component {
 
-
-  OnPress = (data) => {
+    OnPress = (data) => {
     const {Locator} = this.props;
     if(Locator.selectedLocation.name == ''){
       alert('Please Select Location')
@@ -37,7 +36,7 @@ class Banners extends React.Component {
       action(data)
     }
   }
-  
+
   render() {
     const {layout, fields, widthComponent, language, t} = this.props;
     if (
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   language: languageSelector(state),
-  Locator: LocationSelector(state),
+   Locator: LocationSelector(state),
 });
 
 Banners.defaultProps = {
