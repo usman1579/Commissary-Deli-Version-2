@@ -29,7 +29,8 @@ export const mainStack = {
 
   search: 'SearchScreen',
   products: 'ProductsScreen',
-
+   
+  DeliMeat:'DeliMeat',
   product: 'ProductScreen',
   product_review: 'ProductReviewScreen',
   product_review_form: 'ProductReviewFromScreen',

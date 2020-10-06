@@ -45,6 +45,7 @@ import DemoConfig from 'src/screens/profile/demo-config';
 import EditAccount from 'src/screens/profile/edit-account';
 import Downloads from 'src/screens/profile/downloads';
 import Page from 'src/screens/profile/Page';
+import DeliMeat from '../screens/home/containers/DeliMeat/DeliMeat'
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,11 @@ function MainStack() {
         options={{headerShown: false}}
         name={mainStack.home_tab}
         component={HomeTabs}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name={mainStack.DeliMeat}
+        component={DeliMeat}
       />
       <Stack.Screen
         options={{headerShown: false}}

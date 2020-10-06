@@ -19,6 +19,7 @@ function* addToCartSaga({payload}) {
   try {
     const cartKey = yield select(cartKeySelector);
     const data = yield call(addToCart, item, cartKey);
+    console.log('addTocart',data)
     yield call(cb, {success: true});
     yield put({
       type: Actions.ADD_TO_CART_SUCCESS,
@@ -29,6 +30,7 @@ function* addToCartSaga({payload}) {
       payload: true,
     });
   } catch (error) {
+    console.log('Error',error)
     if (cb) {
       yield call(cb, {success: false, error});
     }

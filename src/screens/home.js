@@ -74,15 +74,9 @@ const widthComponent = (spacing) => {
 
 class HomeScreen extends Component {
 
-  constructor(){
-    super()
-    console.log('Constructor')
-    this.state={
-    }
-  }  
 
   renderContainer(config) {
-    console.log("Hello world!");
+    console.log('Config', config)
     const Container = containers[config.type];
     if (!Container) {
       return null;
@@ -100,7 +94,6 @@ class HomeScreen extends Component {
 
 
   render() {
-    // const { category, product } = this.props;
     const {config, toggleSidebar, navigation} = this.props;
 
     return (

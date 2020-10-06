@@ -8,6 +8,8 @@ import Home from 'src/screens/home';
 import Sidebar from 'src/containers/Sidebar';
 
 import {homeDrawer} from 'src/config/navigator';
+import DeliMeat from '../screens/home/containers/DeliMeat/DeliMeat';
+import { mainStack } from '../config/navigator';
 
 const Drawer = createDrawerNavigator();
 const {width} = Dimensions.get('window');
@@ -26,6 +28,7 @@ export default function HomeDrawer() {
       screenOptions={{headerShown: false}}
       drawerStyle={drawerStyle}>
       <Drawer.Screen name={homeDrawer.home} component={Home} />
+      <Drawer.Screen name={mainStack.DeliMeat} component={DeliMeat} />
     </Drawer.Navigator>
   );
 }

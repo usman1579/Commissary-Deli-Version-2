@@ -9,6 +9,7 @@ type Action = {type: string, payload: Object};
  * @returns {{type: string, payload: {item: CartItem, cb: *}}}
  */
 export function addToCart(item, cb = () => {}): Action {
+  console.log('addToCart', {item, cb})
   return {
     type: Actions.ADD_TO_CART,
     payload: {item, cb},

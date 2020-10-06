@@ -14,6 +14,8 @@ function action(data) {
         return NavigationServices.navigate(mainStack.linking_webview, {
           url: id,
         });
+      case 'explore':
+        return  NavigationServices.navigate(mainStack.DeliMeat, {id, type})
       default:
         const router =
           type === 'category'

@@ -54,6 +54,7 @@ import {fetchProductAttributes, fetchRating} from 'src/modules/product/actions';
 import {fetchVendorDetail} from 'src/modules/vendor/actions';
 import {detailVendorSelector} from 'src/modules/vendor/selectors';
 
+
 const {height} = Dimensions.get('window');
 const HEADER_MAX_HEIGHT = height * 0.6;
 
@@ -134,6 +135,8 @@ class Product extends Component {
   addToCart = () => {
     const {addCart, state: {variation}, t} = this.props;
     const {product} = this.state;
+
+    // console.log('variation', variation)
     if (product.get('type') === productType.VARIABLE) {
       const attributeProduct = product
         .get('attributes')
@@ -144,9 +147,11 @@ class Product extends Component {
           type: 'danger',
         });
       } else {
+        // console.log('addCart1', product.get('id') )
         addCart(product.get('id'), () => this.setState({isAddToCart: true}));
       }
     } else {
+      // console.log('addCart2', product.get('id') )
       addCart(product.get('id'), () => this.setState({isAddToCart: true}));
     }
   };

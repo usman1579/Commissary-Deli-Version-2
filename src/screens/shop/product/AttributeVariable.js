@@ -6,9 +6,14 @@ import Option from './OptionVariable';
 import {checkOption} from 'src/modules/product/helper';
 import {margin} from 'src/components/config/spacing';
 
+
 class AttributeVariable extends React.Component {
   onSelectOption = (option) => {
     const {onSelectAttribute, attribute} = this.props;
+    // console.log('option.get(option):::',option.get('option'),)
+    // console.log('attribute.get(name),:::',attribute.get('name'))
+    // console.log('option.get(option),:::',option.get('option'))
+
     onSelectAttribute(
       attribute.get('id'),
       attribute.get('name'),
@@ -31,7 +36,8 @@ class AttributeVariable extends React.Component {
        //  </Text>
     return (
       <>
-
+ 
+        
         <ScrollView
           style={styles.attribute}
           horizontal
@@ -47,42 +53,7 @@ class AttributeVariable extends React.Component {
               }),
             );
 
-
-        if (option.get('option')=='add lettuce' ||
-          option.get('option')=='add tomato' ||
-          option.get('option')=='add onion' ||
-          option.get('option')=='no banana peppers' ||
-          option.get('option')=='no green peppers' ||
-          option.get('option')=='no spinach' ||
-          option.get('option')=='no jalapeños' ||
-          option.get('option')=='add mayo' ||
-          option.get('option')=='no yellow mustard' ||
-          option.get('option')=='no honey mustard' ||
-          option.get('option')=='no spicy brown mustard' ||
-          option.get('option')=='no sub dressing'
-
-          ){  
-
-              return (
-              <TouchableOpacity
-                activeOpacity={disabled ? 1 : 0}
-                key={option}
-                onPress={() => (disabled ? {} : this.onSelectOption(option))}  >
-                <Option
-                  type={attribute.get('type')}
-                  selected={
-                    option
-                  }
-                  disabled={disabled}
-                  option={option}
-                  value={option}
-                />
-              </TouchableOpacity>
-            );
-
-           } else {
-
-              return (
+            return (
               <TouchableOpacity
                 activeOpacity={disabled ? 1 : 0}
                 key={option}
@@ -98,10 +69,6 @@ class AttributeVariable extends React.Component {
                 />
               </TouchableOpacity>
             );
-
-           }
-
-
           })}
         </ScrollView>
       </>
@@ -111,14 +78,6 @@ class AttributeVariable extends React.Component {
 const styles = StyleSheet.create({
   attribute: {
     marginTop: margin.small,
-  },
-    attributeVeggie: {
-    marginTop: margin.small,
-    width: '50%',
-  },
-  slctd: {
-      borderColor: '#000',
-      borderWidth: 1
   },
 });
 

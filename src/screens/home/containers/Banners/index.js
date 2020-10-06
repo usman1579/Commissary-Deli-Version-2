@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {withTranslation} from 'react-i18next';
@@ -15,7 +15,7 @@ import {languageSelector} from 'src/modules/common/selectors';
 import {padding} from 'src/components/config/spacing';
 
 import {colBanner, typeViewBanner} from './config';
-
+import {mainStack} from '../../../../../src/config/navigator';
 import action from 'src/utils/action';
 import { LocationSelector } from '../../../../modules/Locator/selector';
 
@@ -25,20 +25,28 @@ const initHeader = {
   style: {},
 };
 
-class Banners extends React.Component {
+class Banners extends Component {
 
     OnPress = (data) => {
+
+      // console.log('Data',data)
+      // if(data.id == '999'){
+      //   this.props.navigation.navigate(mainStack.DeliMeat)
+      // }
     const {Locator} = this.props;
     if(Locator.selectedLocation.name == ''){
       alert('Please Select Location')
     }
     else{
       action(data)
+      // console.log('this.props.fields:::', this.props.fields)
     }
+
   }
 
   render() {
     const {layout, fields, widthComponent, language, t} = this.props;
+
     if (
       !fields ||
       typeof fields !== 'object' ||
