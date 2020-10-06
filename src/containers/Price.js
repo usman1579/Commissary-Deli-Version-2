@@ -10,7 +10,7 @@ import fonts, {lineHeights, sizes} from 'src/components/config/fonts';
 import {margin} from 'src/components/config/spacing';
 
 export function Price(props) {
-  const {price_format, h4, type, isPercentSale, style} = props;
+  const {price_format, h4, type, isPercentSale, style, name } = props;
   const {t} = useTranslation();
 
   const h = h4 ? 'h4' : 'h5';
@@ -40,7 +40,7 @@ export function Price(props) {
       <Text colorThird style={[styleTextSmall, style && style]}>
         {`${t('common:text_from')} `}
         <Text medium style={styleText}>
-          {price_format.regular_price}
+          {price_format.regular_price }{name}
         </Text>
       </Text>
     );

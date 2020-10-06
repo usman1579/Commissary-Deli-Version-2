@@ -129,7 +129,7 @@ const ItemDefault = React.memo((props) => {
           style={styles.textPrice}
         />
 
-        <Text>{"(per lb)"}</Text>
+        {/* <Text>{"(per lb)"}</Text> */}
 
         
         {configs.get('toggleReviewProduct') &&

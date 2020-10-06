@@ -55,8 +55,12 @@ import {fetchVendorDetail} from 'src/modules/vendor/actions';
 import {detailVendorSelector} from 'src/modules/vendor/selectors';
 
 
+
 const {height} = Dimensions.get('window');
 const HEADER_MAX_HEIGHT = height * 0.6;
+
+
+const LBcheck = ['deli cheese','salads','Turkey','ham','Beef','Chicken','italian meats   |   salami','Beef   |   Pastrami','german meats', 'italian meats','Bologna   |   german meats']
 
 class Product extends Component {
   constructor(props, context) {
@@ -179,6 +183,8 @@ class Product extends Component {
   showPrice = () => {
     const {currency, defaultCurrency, state: {variation_id}} = this.props;
     const {product, variations} = this.state;
+    const LB =  product.get('categories').map((category) => category.get('name')).join('   |   ')
+    const LBvalue = LBcheck.includes(LB)
     const variation = variations.find(v => v.get('id') === variation_id);
     let price_format = product.get('price_format').toJS();
     let type = product.get('type');
@@ -194,6 +200,7 @@ class Product extends Component {
       <View style={styles.viewPrice}>
         <Price
           price_format={price_format}
+          name={LBvalue ? ' / lb' :  null }
           type={type}
           h4
           isPercentSale
@@ -209,6 +216,7 @@ class Product extends Component {
 
   showInfoType = () => {
     const {attribute, state: {variation}, selectVariation, updateMetaVariation} = this.props;
+
     const {product, variations, loadingVariation} = this.state;
     if (product.get('type') === productType.EXTERNAL) {
       return <ProductExternal product={product} />;
@@ -231,6 +239,8 @@ class Product extends Component {
     }
     return null;
   };
+
+  
 
   render() {
     const {
