@@ -247,6 +247,7 @@ class ProductsScreen extends React.Component {
               }
             />
             <ProductView
+              LB={unescape(name)}
               data={fromJS(data)}
               loadingMore={loadingMore}
               refreshing={refreshing}

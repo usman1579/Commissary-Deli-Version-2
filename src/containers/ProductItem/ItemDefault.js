@@ -39,6 +39,7 @@ const ItemDefault = React.memo((props) => {
     configs,
     addCart,
     loading,
+    LB
   } = props;
   const {
     id,
@@ -52,6 +53,7 @@ const ItemDefault = React.memo((props) => {
     rating_count,
     purchasable,
     stock_status,
+    name1,
   } = item;
   const {t} = useTranslation();
 
@@ -125,6 +127,7 @@ const ItemDefault = React.memo((props) => {
         </Text>
         <Price
           price_format={price_format}
+          name1={LB}
           type={type}
           style={styles.textPrice}
         />

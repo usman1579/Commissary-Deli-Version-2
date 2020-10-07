@@ -200,7 +200,7 @@ class Product extends Component {
       <View style={styles.viewPrice}>
         <Price
           price_format={price_format}
-          name={LBvalue ? ' / lb' :  null }
+          name1={LBvalue ? ' / lb' :  null }
           type={type}
           h4
           isPercentSale

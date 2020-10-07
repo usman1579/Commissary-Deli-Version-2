@@ -56,13 +56,13 @@ class ProductView extends React.Component {
       currency,
       defaultCurrency,
       days,
+      LB
     } = this.props;
     const wImage = widthImage(column);
     const hImage = heightImage(wImage);
     const dataPrepare = data.map((item) =>
       prepareProductItem(item, currency, defaultCurrency, days),
     );
-
     return (
       <FlatList
         showsHorizontalScrollIndicator={false}
@@ -74,7 +74,7 @@ class ProductView extends React.Component {
         data={dataPrepare.toJS()}
         renderItem={({item}) => (
           <Container disable={column > 1 ? 'all' : 'none'}>
-            <ProductItem item={item} width={wImage} height={hImage} />
+            <ProductItem item={item} LB={LB} width={wImage} height={hImage} />
           </Container>
         )}
         onEndReached={handleLoadMore}

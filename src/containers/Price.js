@@ -9,8 +9,10 @@ import {red, yellow} from 'src/components/config/colors';
 import fonts, {lineHeights, sizes} from 'src/components/config/fonts';
 import {margin} from 'src/components/config/spacing';
 
+
+const LBcheck = ['deli cheese','salads','Turkey','ham','Beef','Chicken','italian meats   |   salami','Beef   |   Pastrami','german meats', 'italian meats','Bologna   |   german meats']
 export function Price(props) {
-  const {price_format, h4, type, isPercentSale, style, name } = props;
+  const {price_format, h4, type, isPercentSale, style, name1 } = props;
   const {t} = useTranslation();
 
   const h = h4 ? 'h4' : 'h5';
@@ -40,7 +42,7 @@ export function Price(props) {
       <Text colorThird style={[styleTextSmall, style && style]}>
         {`${t('common:text_from')} `}
         <Text medium style={styleText}>
-          {price_format.regular_price }{name}
+          {price_format.regular_price }{ LBcheck.includes(name1) ? ' / lb' : null }
         </Text>
       </Text>
     );
