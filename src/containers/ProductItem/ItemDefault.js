@@ -66,6 +66,16 @@ const ItemDefault = React.memo((props) => {
     height,
   };
   const listStatus = ['instock', 'onbackorder'];
+  
+  const HandlePartyTray = (id) => {
+    if(LB == 'Party Trays'){
+      alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
+      addCart(id)
+    }
+    else{
+      addCart(id)
+    }
+  }
 
   return (
     <TouchableOpacity
@@ -106,7 +116,7 @@ const ItemDefault = React.memo((props) => {
             listStatus.includes(stock_status) && (
               <TouchableOpacity
                 style={styles.buttonAdd}
-                onPress={() => addCart(id)}>
+                onPress={() => HandlePartyTray(id)}>
                 {loading ? <ActivityIndicator size="small"/> : <Text h4 medium style={styles.textAdd}>
                   +
                 </Text>}

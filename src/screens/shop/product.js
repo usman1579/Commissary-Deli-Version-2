@@ -139,8 +139,7 @@ class Product extends Component {
   addToCart = () => {
     const {addCart, state: {variation}, t} = this.props;
     const {product} = this.state;
-
-    // console.log('variation', variation)
+    const LB =  product.get('categories').map((category) => category.get('name')).join('   |   ')
     if (product.get('type') === productType.VARIABLE) {
       const attributeProduct = product
         .get('attributes')
@@ -151,11 +150,15 @@ class Product extends Component {
           type: 'danger',
         });
       } else {
-        // console.log('addCart1', product.get('id') )
+        if(LB == 'Party Trays'){
+          alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
+        }
         addCart(product.get('id'), () => this.setState({isAddToCart: true}));
       }
     } else {
-      // console.log('addCart2', product.get('id') )
+      if(LB == 'Party Trays'){
+        alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
+      }
       addCart(product.get('id'), () => this.setState({isAddToCart: true}));
     }
   };
