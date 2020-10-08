@@ -9,7 +9,7 @@ type Props = {
   type: 'default' | 'wishlist' | 'cart' | 'order',
 };
 const ProductItem = (props: Props) => {
-  const {type, item, ...rest} = props;
+  const {type, item,LB, ...rest} = props;
   if (!item || !item.id) {
     return null;
   }
@@ -20,7 +20,7 @@ const ProductItem = (props: Props) => {
   } else if (type === 'order') {
     return <ItemOrder item={item} {...rest} />;
   }
-  return <ItemDefault item={item} {...rest} />;
+  return <ItemDefault item={item} LB = {LB} {...rest} />;
 };
 
 ProductItem.defaultProps = {
