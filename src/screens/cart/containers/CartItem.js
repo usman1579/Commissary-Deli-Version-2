@@ -64,10 +64,24 @@ function CartItem(props) {
               </Text>
 
               {Object.values(item.variation).map((data, index) =>
-                <Text style={{color:'black',fontSize:11}}>
+                <Text style={{ color: 'black', fontSize: 11 }}>
                   {data}
                 </Text>
               )}
+
+
+              {/* {item.veggie == null  || item.veggie == undefined?
+               null
+                :
+                <>
+                <Text style={{fontSize:16,fontWeight:'bold'}}>Veggies</Text>
+               { item.veggie.map( (data) =>{
+                  <Text style={{ color: 'black', fontSize: 11 }}>
+                    {data.title}
+                  </Text>
+                })}
+              </>
+              } */}
               {/* <Row style={styles.viewAttribute}>
                 {Object.values(item.variation).map((data, index) =>
                  this.renderVariation(data, index),

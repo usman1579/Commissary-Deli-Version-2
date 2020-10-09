@@ -54,7 +54,6 @@ import { handleError } from 'src/utils/error';
 import { fetchProductAttributes, fetchRating } from 'src/modules/product/actions';
 import { fetchVendorDetail } from 'src/modules/vendor/actions';
 import { detailVendorSelector } from 'src/modules/vendor/selectors';
-import Veggie from './Veggie';
 
 const { height } = Dimensions.get('window');
 const HEADER_MAX_HEIGHT = height * 0.6;
@@ -527,11 +526,6 @@ class Product extends Component {
           :
           null
           }
-
-
-          {/* <Veggie 
-          // AttributeName='Vegetables'
-          /> */}
           <ListItem
             title={t('catalog:text_description')}
             onPress={() =>
