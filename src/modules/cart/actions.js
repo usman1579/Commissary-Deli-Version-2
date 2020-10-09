@@ -8,7 +8,13 @@ type Action = {type: string, payload: Object};
  * @param cb
  * @returns {{type: string, payload: {item: CartItem, cb: *}}}
  */
-export function addToCart(item, cb = () => {}): Action {
+export function addToCart(item , veggies,condiments, cb = () => {}): Action {
+  console.log('vvvvv', veggies)
+  console.log('ggggg', condiments)
+   item.cart_item_data={
+    veggie:veggies,
+    condi:condiments
+   }
   console.log('addToCart', {item, cb})
   return {
     type: Actions.ADD_TO_CART,

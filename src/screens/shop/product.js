@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {compose} from 'recompose';
-import {fromJS, List} from 'immutable';
-import {connect} from 'react-redux';
+import { compose } from 'recompose';
+import { fromJS, List } from 'immutable';
+import { connect } from 'react-redux';
 import merge from 'lodash/merge';
 import unescape from 'lodash/unescape';
-import {withTranslation} from 'react-i18next';
-import {showMessage} from 'react-native-flash-message';
-import {StyleSheet, View, Dimensions, TouchableOpacity} from 'react-native';
-import {Text, ListItem, ThemedView, ThemeConsumer} from 'src/components';
+import { withTranslation } from 'react-i18next';
+import { showMessage } from 'react-native-flash-message';
+import { StyleSheet, View, Dimensions, TouchableOpacity, Image, FlatList } from 'react-native';
+import { Text, ListItem, ThemedView, ThemeConsumer } from 'src/components';
 import Price from 'src/containers/Price';
 import Container from 'src/containers/Container';
 import Rating from 'src/containers/Rating';
 import Empty from 'src/containers/Empty';
 import VendorHeaderDetail from 'src/containers/vendor/VendorHeaderDetail';
 import TextHtml from 'src/containers/TextHtml';
+import RoundCheckbox from 'rn-round-checkbox';
 
 import ScrollProductDetail from './product/ScrollProductDetail';
 import RelatedProducts from './containers/RelatedProducts';
@@ -26,7 +27,7 @@ import ProductImages from './product/ProductImages';
 import ProductStock from './product/ProductStock';
 import FooterProduct from './product/FooterProduct';
 
-import {getVariations} from 'src/modules/product/service';
+import { getVariations } from 'src/modules/product/service';
 import {
   attributeSelector,
   dataRatingSelector,
@@ -38,36 +39,35 @@ import {
   configsSelector,
 } from 'src/modules/common/selectors';
 
-import {prepareProductItem} from 'src/utils/product';
-import {changeColor, changeSize} from 'src/utils/text-html';
+import { prepareProductItem } from 'src/utils/product';
+import { changeColor, changeSize } from 'src/utils/text-html';
 
-import {getSingleData, defaultPropsData} from 'src/hoc/single-data';
-import {withAddToCart} from 'src/hoc/hoc-add-to-card';
-import {withLoading} from 'src/hoc/loading';
+import { getSingleData, defaultPropsData } from 'src/hoc/single-data';
+import { withAddToCart } from 'src/hoc/hoc-add-to-card';
+import { withLoading } from 'src/hoc/loading';
 
-import {mainStack, homeTabs} from 'src/config/navigator';
-import {margin} from 'src/components/config/spacing';
+import { mainStack, homeTabs } from 'src/config/navigator';
+import { margin } from 'src/components/config/spacing';
 import * as productType from 'src/config/product';
 
-import {handleError} from 'src/utils/error';
-import {fetchProductAttributes, fetchRating} from 'src/modules/product/actions';
-import {fetchVendorDetail} from 'src/modules/vendor/actions';
-import {detailVendorSelector} from 'src/modules/vendor/selectors';
+import { handleError } from 'src/utils/error';
+import { fetchProductAttributes, fetchRating } from 'src/modules/product/actions';
+import { fetchVendorDetail } from 'src/modules/vendor/actions';
+import { detailVendorSelector } from 'src/modules/vendor/selectors';
+import Veggie from './Veggie';
 
-
-
-const {height} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 const HEADER_MAX_HEIGHT = height * 0.6;
 
 
-const LBcheck = ['deli cheese','salads','Turkey','ham','Beef','Chicken','italian meats   |   salami','Beef   |   Pastrami','german meats', 'italian meats','Bologna   |   german meats']
+const LBcheck = ['deli cheese', 'salads', 'Turkey', 'ham', 'Beef', 'Chicken', 'italian meats   |   salami', 'Beef   |   Pastrami', 'german meats', 'italian meats', 'Bologna   |   german meats']
 
 class Product extends Component {
   constructor(props, context) {
     super(props, context);
 
-    const {route, data, currency, defaultCurrency} = props;
-    const product = route?.params?.product ?? {};
+    const { route, data, currency, defaultCurrency } = props;
+    const product = route ?.params ?.product ?? {};
     // no need get days in prepareProductItem
     const dataPrepare = prepareProductItem(
       fromJS(data),
@@ -82,12 +82,79 @@ class Product extends Component {
       quantity: 1,
       variations: List(),
       isAddToCart: false,
+      DATA: [
+        {
+          title: 'Lettuce',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/lettuce.png',
+          value: true
+        },
+        {
+
+          title: 'Spinach',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/spinach.png',
+          value: false
+        },
+        {
+
+          title: 'Tomato',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/tomatoe.png',
+          value: true
+        },
+        {
+          title: 'Onion',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/onion.png',
+          value: true
+        },
+        {
+          title: 'Jalapenos',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/jalapenos.png',
+          value: false
+        },
+        {
+          title: 'Greenpepper',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/greenpepper.png',
+          value: false
+        },
+        {
+          title: 'Banna-peppers',
+          image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/09/banna-peppers.png',
+          value: false
+        },
+      ],
+      DATA2:[
+        {
+            title: 'Mayo',
+            image: 'https://lexiscleankitchen.com/wp-content/uploads/2019/04/Homemade-Mayo-683x1024.jpg',
+            value: false
+        },
+        {
+            title: 'Yellow Mustard',
+            image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/10/yellow-mustard-1.png',
+            value: false
+        },
+        {
+            title: 'Honey Mustard',
+            image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/10/honey-mustard-1.png',
+            value: false
+        },
+        {
+            title: 'Spicy Honeys Mustard',
+            image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/10/spicy-honey-mustard-1.png',
+            value: false
+        },
+        {
+            title: 'Sub Dressing',
+            image: 'https://mdbsapi.daviserve.com/mdbs-content/uploads/2020/10/sub-dressing-1.png',
+            value: false
+        },
+    ]
+     
     };
   }
 
   componentDidMount() {
-    const {dispatch, attribute, lang} = this.props;
-    const {product} = this.state;
+    const { dispatch, attribute, lang } = this.props;
+    const { product } = this.state;
 
     const vendor_id = product.getIn(['store', 'id']);
     dispatch(fetchRating(product.get('id')));
@@ -137,9 +204,13 @@ class Product extends Component {
   }
 
   addToCart = () => {
-    const {addCart, state: {variation}, t} = this.props;
-    const {product} = this.state;
-    const LB =  product.get('categories').map((category) => category.get('name')).join('   |   ')
+    const { addCart, state: { variation }, t } = this.props;
+    
+    console.log('addCart::::::::', addCart)
+    const { product ,DATA, DATA2} = this.state;
+    const veggies = DATA.filter(x=> x.value == true)
+    const condiments = DATA2.filter(x=> x.value == true)
+    const LB = product.get('categories').map((category) => category.get('name')).join('   |   ')
     if (product.get('type') === productType.VARIABLE) {
       const attributeProduct = product
         .get('attributes')
@@ -150,22 +221,33 @@ class Product extends Component {
           type: 'danger',
         });
       } else {
-        if(LB == 'Party Trays'){
+        if (LB == 'Party Trays') {
           alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
         }
-        addCart(product.get('id'), () => this.setState({isAddToCart: true}));
+        else if(LB == 'subs' || LB == 'wraps'){
+          addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
+        }
+        else{
+          addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+        }
+        
       }
     } else {
-      if(LB == 'Party Trays'){
+      if (LB == 'Party Trays') {
         alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
       }
-      addCart(product.get('id'), () => this.setState({isAddToCart: true}));
+      else if(LB == 'subs' || LB == 'wraps'){
+        addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
+      }
+      else{
+        addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+      }
     }
   };
 
   images = () => {
-    const {state: {variation_id}} = this.props;
-    const {product, variations, images} = this.state;
+    const { state: { variation_id } } = this.props;
+    const { product, variations, images } = this.state;
     const variation = variations.find(v => v.get('id') === variation_id);
 
     if (
@@ -184,9 +266,9 @@ class Product extends Component {
   };
 
   showPrice = () => {
-    const {currency, defaultCurrency, state: {variation_id}} = this.props;
-    const {product, variations} = this.state;
-    const LB =  product.get('categories').map((category) => category.get('name')).join('   |   ')
+    const { currency, defaultCurrency, state: { variation_id } } = this.props;
+    const { product, variations } = this.state;
+    const LB = product.get('categories').map((category) => category.get('name')).join('   |   ')
     const LBvalue = LBcheck.includes(LB)
     const variation = variations.find(v => v.get('id') === variation_id);
     let price_format = product.get('price_format').toJS();
@@ -203,24 +285,24 @@ class Product extends Component {
       <View style={styles.viewPrice}>
         <Price
           price_format={price_format}
-          name1={LBvalue ? ' / lb' :  null }
+          name1={LBvalue ? ' / lb' : null}
           type={type}
           h4
           isPercentSale
-          // style={styles.viewPrice}
+        // style={styles.viewPrice}
         />
         <ProductStock
           product={p}
-          // style={p.get('type') !== productType.SIMPLE && styles.viewStock}
+        // style={p.get('type') !== productType.SIMPLE && styles.viewStock}
         />
       </View>
     );
   };
 
   showInfoType = () => {
-    const {attribute, state: {variation}, selectVariation, updateMetaVariation} = this.props;
+    const { attribute, state: { variation }, selectVariation, updateMetaVariation } = this.props;
 
-    const {product, variations, loadingVariation} = this.state;
+    const { product, variations, loadingVariation } = this.state;
     if (product.get('type') === productType.EXTERNAL) {
       return <ProductExternal product={product} />;
     }
@@ -243,20 +325,103 @@ class Product extends Component {
     return null;
   };
 
-  
+
+  Vegetables = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>Veggies</Text>
+        <FlatList
+          data={this.state.DATA}
+          renderItem={({ item, index }) =>
+            <View style={{ flexDirection: 'row', }}>
+              <Image
+                style={styles.image}
+                resizeMode='contain'
+                source={{ uri: item.image }}
+              />
+              <Text style={styles.text}>{item.title}</Text>
+
+              <View style={styles.round}>
+                <RoundCheckbox
+                  size={24}
+                  checked={item.value}
+                  onValueChange={() => this.onClick(index)}
+                />
+              </View>
+            </View>
+          }
+          keyExtractor={item => item.id}
+        />
+
+      </View>
+    )
+  }
+
+  onClick = (index) =>{
+    const { DATA } = this.state;
+    DATA[index].value = !DATA[index].value
+    // update state
+    this.setState({
+      DATA,
+    });
+  }
+
+  onClick2 = (index) =>{
+    const { DATA2 } = this.state;
+    DATA2[index].value = !DATA2[index].value
+    // update state
+    this.setState({
+      DATA2,
+    });
+  }
+
+
+  Condiments = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>Condiments</Text>
+        <FlatList
+          data={this.state.DATA2}
+          renderItem={({ item, index }) =>
+            <View style={{ flexDirection: 'row', }}>
+              <Image
+                style={styles.image}
+                resizeMode='contain'
+                source={{ uri: item.image }}
+              />
+              <Text style={styles.text}>{item.title}</Text>
+
+              <View style={styles.round}>
+                <RoundCheckbox
+                  size={24}
+                  checked={item.value}
+                  onValueChange={() => this.onClick2(index)}
+                />
+              </View>
+            </View>
+          }
+          keyExtractor={item => item.id}
+        />
+
+      </View>
+    )
+  }
+
+
 
   render() {
     const {
       t,
-      dataRating: {rating},
+      dataRating: { rating },
       navigation,
       configs,
       vendorDetail,
       loading,
-      state: {variation_id},
+      state: { variation_id },
     } = this.props;
 
-    const {product, isAddToCart, variations} = this.state;
+    const { product, isAddToCart, variations } = this.state;
+    const Cat = product.get('categories').map((category) => category.get('name')).join('   |   ')
 
     if (!product.get('id')) {
       return (
@@ -291,7 +456,7 @@ class Product extends Component {
             product_id={product.get('id')}
             url={product.get('permalink')}
             name_product={product.get('name')}
-            height={HEADER_MAX_HEIGHT/2+50}
+            height={HEADER_MAX_HEIGHT / 2 + 50}
           />
         }
         footerElement={
@@ -306,7 +471,7 @@ class Product extends Component {
             />
           )
         }
-        heightViewImage={HEADER_MAX_HEIGHT/2+50}>
+        heightViewImage={HEADER_MAX_HEIGHT / 2 + 50}>
         <Container style={styles.container}>
           <View style={styles.viewCategoryRating}>
             <CategoryName product={product} style={styles.textCategory} />
@@ -337,22 +502,36 @@ class Product extends Component {
             </Text>
           ) : null}
           {configs.get('toggleShortDescriptionProduct') &&
-          product.get('short_description') ? (
-            <View style={styles.viewDescription}>
-              <ThemeConsumer>
-                {({theme}) => (
-                  <TextHtml
-                    value={product.get('short_description')}
-                    style={merge(
-                      changeSize('h6'),
-                      changeColor(theme.Text.third.color),
-                    )}
-                  />
-                )}
-              </ThemeConsumer>
-            </View>
-          ) : null}
+            product.get('short_description') ? (
+              <View style={styles.viewDescription}>
+                <ThemeConsumer>
+                  {({ theme }) => (
+                    <TextHtml
+                      value={product.get('short_description')}
+                      style={merge(
+                        changeSize('h6'),
+                        changeColor(theme.Text.third.color),
+                      )}
+                    />
+                  )}
+                </ThemeConsumer>
+              </View>
+            ) : null}
           {this.showInfoType()}
+
+          {Cat == 'subs' || Cat == 'wraps' ? 
+          <>
+          {this.Vegetables()}
+          {this.Condiments()}
+          </>
+          :
+          null
+          }
+
+
+          {/* <Veggie 
+          // AttributeName='Vegetables'
+          /> */}
           <ListItem
             title={t('catalog:text_description')}
             onPress={() =>
@@ -463,6 +642,29 @@ const styles = StyleSheet.create({
   vendor: {
     marginTop: margin.big - 1,
   },
+  container: {
+    flex: 1,
+    marginVertical: 20
+  },
+  text: {
+    fontSize: 14,
+    color: 'black',
+    fontWeight: '500',
+    textAlign: 'left',
+    marginHorizontal: 10,
+    flex: 6,
+    margin: 10
+  },
+  image: {
+    height: 30,
+    width: 30,
+    margin: 10,
+    flex: 1
+  },
+  round: {
+    flex: 1,
+    margin: 10,
+  }
 });
 
 const mapStateToProps = (state) => {
