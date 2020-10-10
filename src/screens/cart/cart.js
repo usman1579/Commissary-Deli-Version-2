@@ -134,7 +134,7 @@ function CartScreen(props) {
             />
           ) : (
             <>
-              <CartTotal style={styles.viewTotal} totals={totals} currency={currency}/>
+              {/* <CartTotal style={styles.viewTotal} totals={totals} currency={currency}/> */}
               <SwipeListView
                 useFlatList
                 removeClippedSubviews={false}
