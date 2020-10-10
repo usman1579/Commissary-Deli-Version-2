@@ -2,8 +2,8 @@ import * as React from 'react';
 import split from 'lodash/split';
 import unescape from 'lodash/unescape';
 
-import { StyleSheet, View } from 'react-native';
-import { Text, Image, ThemeConsumer } from 'src/components';
+import { StyleSheet, View,Text } from 'react-native';
+import {  Image, ThemeConsumer } from 'src/components';
 import { Row, Col } from 'src/containers/Gird';
 import Quantity from 'src/containers/Quantity';
 
@@ -47,6 +47,8 @@ function CartItem(props) {
             {
               backgroundColor: theme.colors.bgColor,
               borderColor: theme.colors.border,
+            }, {
+              flex: 1
             },
             style && style,
           ]}>
@@ -70,18 +72,31 @@ function CartItem(props) {
               )}
 
 
-              {/* {item.veggie == null  || item.veggie == undefined?
-               null
+              {item.veggie == null || item.veggie == undefined ?
+                null
                 :
-                <>
-                <Text style={{fontSize:16,fontWeight:'bold'}}>Veggies</Text>
-               { item.veggie.map( (data) =>{
-                  <Text style={{ color: 'black', fontSize: 11 }}>
-                    {data.title}
-                  </Text>
-                })}
-              </>
-              } */}
+                <View style={{marginTop:10}}>
+                  <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Veggies</Text>
+                  {Object.values(item.veggie).map((data,index) => 
+                    <Text style={{ color: 'black', fontSize: 11 }}>
+                      {data.title}
+                    </Text>
+                  )}
+                </View>
+              }
+
+              {item.condi == null || item.condi == undefined ?
+                null
+                :
+                <View style={{marginTop:10}}>
+                  <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Condiments</Text>
+                  {Object.values(item.condi).map((data,index) => 
+                    <Text style={{ color: 'black', fontSize: 11 }}>
+                      {data.title}
+                    </Text>
+                  )}
+                </View>
+              }
               {/* <Row style={styles.viewAttribute}>
                 {Object.values(item.variation).map((data, index) =>
                  this.renderVariation(data, index),

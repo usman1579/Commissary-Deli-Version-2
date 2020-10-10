@@ -205,7 +205,7 @@ class Product extends Component {
   addToCart = () => {
     const { addCart, state: { variation }, t } = this.props;
     
-    console.log('addCart::::::::', addCart)
+    // console.log('addCart::::::::', addCart)
     const { product ,DATA, DATA2} = this.state;
     const veggies = DATA.filter(x=> x.value == true)
     const condiments = DATA2.filter(x=> x.value == true)
@@ -222,6 +222,7 @@ class Product extends Component {
       } else {
         if (LB == 'Party Trays') {
           alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
+          addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
         }
         else if(LB == 'subs' || LB == 'wraps'){
           addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
@@ -234,6 +235,7 @@ class Product extends Component {
     } else {
       if (LB == 'Party Trays') {
         alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
+        addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
       }
       else if(LB == 'subs' || LB == 'wraps'){
         addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
