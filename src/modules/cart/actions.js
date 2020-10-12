@@ -8,14 +8,16 @@ type Action = {type: string, payload: Object};
  * @param cb
  * @returns {{type: string, payload: {item: CartItem, cb: *}}}
  */
-export function addToCart(item , veggies,condiments, cb = () => {}): Action {
-  console.log('vvvvv', veggies)
-  console.log('ggggg', condiments)
+export function addToCart(item , veggies,condiments,NotiId ,cb = () => {}): Action {
+  // console.log('vvvvv', veggies)
+  // console.log('ggggg', condiments)
+  // console.log('NotiId', NotiId)
    item.cart_item_data={
     veggie:veggies,
-    condi:condiments
+    condi:condiments,
+    NotiUserId:NotiId
    }
-  console.log('addToCart', {item, cb})
+  // console.log('addToCart', {item, cb})
   return {
     type: Actions.ADD_TO_CART,
     payload: {item, cb},

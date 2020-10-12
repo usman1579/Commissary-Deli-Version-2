@@ -29,7 +29,8 @@ import Vendors from './home/containers/Vendors';
 import Search from './home/containers/Search';
 import Divider from './home/containers/Divider';
 import Locator from './home/containers/Locator'
-
+import OneSignal from "react-native-onesignal";
+import { NotificationUserId } from '../modules/Locator/action';
 const {width} = Dimensions.get('window');
 
 const containers = {
@@ -73,6 +74,17 @@ const widthComponent = (spacing) => {
 };
 
 class HomeScreen extends Component {
+
+  componentDidMount(){
+    OneSignal.init('06fcce55-a596-4272-bbbf-7c55d14eb7b6', {
+      kOSSettingsKeyAutoPrompt: true,
+    });
+    OneSignal.getPermissionSubscriptionState( (status) => {
+     const  notiuserID = status.userId;
+      //  alert(notiuserID);
+      this.props.dispatch(NotificationUserId(notiuserID))
+    });
+  }
 
 
   renderContainer(config) {

@@ -37,6 +37,7 @@ const InformationMe = ({isLogin, clickPage}) => {
         pad={padding.large}
         onPress={() => clickPage(mainStack.order_list)}
       />
+      {/*
       <ListItem
         leftIcon={icon(3, 'info')}
         title={t('common:text_downloads')}
@@ -46,8 +47,7 @@ const InformationMe = ({isLogin, clickPage}) => {
         pad={padding.large}
         containerStyle={styles.itemEnd}
         onPress={() => clickPage(mainStack.downloads)}
-      />
-      {/*<ListItem*/}
+      /><ListItem*/}
       {/*  leftIcon={icon(2, 'info')}*/}
       {/*  title='Chat Vendors'*/}
       {/*  type="underline"*/}

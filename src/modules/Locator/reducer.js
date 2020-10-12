@@ -9,6 +9,7 @@ const initState = fromJS({
     name:'',
   },
   loading: false,
+  NotiUserId:''
 });
 
 export default function locationReducer(state = initState, action = {}) {
@@ -21,6 +22,8 @@ export default function locationReducer(state = initState, action = {}) {
       return state.set('loading', false).set('Location', initState.get('Location'));
     case Actions.SET_LOCATION:
         return state.set('selectedLocation', action.payload);
+    case Actions.SET_NOTIFICATION_USER_ID:
+      return state.set('NotiUserId', action.payload)    
     case 'UPDATE_DEMO_CONFIG_SUCCESS':
       return initState;
     default:

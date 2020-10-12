@@ -67,7 +67,7 @@ function CartItem(props) {
 
               {Object.values(item.variation).map((data, index) =>
                 <Text style={{ color: 'black', fontSize: 11 }}>
-                  {data}
+                  {data.replace(/-/g,' ').replace('2 00','$2')}
                 </Text>
               )}
 

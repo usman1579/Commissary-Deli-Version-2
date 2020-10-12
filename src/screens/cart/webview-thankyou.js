@@ -23,13 +23,15 @@ class WebviewThankYou extends Component {
 
   handleContinue = () => {
     const {navigation, dispatch} = this.props;
+    console.log('Yess')
     dispatch(clearCart());
     navigation.pop();
-    navigation.navigate(homeTabs.shop);
+    navigation.navigate(homeTabs.home_drawer);
   };
 
   handleResponse = data => {
-    console.log(data);
+    console.log('yes');
+    // console.log(data);
   };
 
   render() {

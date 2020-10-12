@@ -23,6 +23,12 @@ import {clearCart} from 'src/modules/cart/actions';
 
 import {API} from 'src/config/api';
 
+import OneSignal from "react-native-onesignal";
+import { NotificationUserId } from '../../modules/Locator/action';
+  
+ 
+
+
 class WebviewCheckout extends Component {
   webview = null;
   request = null;
@@ -36,6 +42,18 @@ class WebviewCheckout extends Component {
       canGoForward: false,
     };
   }
+
+  // componentDidMount(){
+  //   OneSignal.init('06fcce55-a596-4272-bbbf-7c55d14eb7b6', {
+  //     kOSSettingsKeyAutoPrompt: true,
+  //   });
+  //   OneSignal.getPermissionSubscriptionState( (status) => {
+  //    const  notiuserID = status.userId;
+  //      alert(notiuserID);
+  //     this.props.dispatch(NotificationUserId(notiuserID))
+  //   });
+  // }
+
 
   setModalVisible = visible => {
     this.setState({

@@ -248,7 +248,7 @@ class ProductsScreen extends React.Component {
             />
             <ProductView
               LB={unescape(name)}
-              data={fromJS(data.sort((a, b) => a.name.localeCompare(b.name)))}
+              data={ unescape(name) == 'subs' || unescape(name) == 'wraps' ? fromJS(data) : fromJS(data.sort((a, b) => a.name.localeCompare(b.name))) }
               loadingMore={loadingMore}
               refreshing={refreshing}
               handleLoadMore={this.handleLoadMore}
@@ -294,3 +294,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(withTranslation()(ProductsScreen));
+

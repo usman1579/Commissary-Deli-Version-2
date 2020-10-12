@@ -4,6 +4,10 @@ import {StyleSheet, View} from 'react-native';
 
 import {padding} from 'src/components/config/spacing';
 
+import { LogBox } from 'react-native';
+// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+// LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const Container = function ({disable, style, children, ...rest}) {
   return (
     <View

@@ -83,10 +83,10 @@ export function withAddToCart(WrappedComponent) {
      * Add to cart action
      * @param id : product id
      */
-    const addCart = (id, vegie,condi, cb = () => {}) => {
+    const addCart = (id, vegie,condi,NotiId ,cb = () => {}) => {
       setTrue();
       props.dispatch(
-        addToCart(merge(state, {product_id: id}), vegie , condi , (data) => callBack(data, cb)),
+        addToCart(merge(state, {product_id: id}), vegie , condi ,NotiId ,(data) => callBack(data, cb)),
       );
     };
 

@@ -231,7 +231,7 @@ const styles = {
     color: color(theme.colors.disabled).darken(0.3),
   }),
   title: (type, theme) => ({
-    color: type === 'solid' ? theme.Button.color : theme.Button.outlineColor,
+    color: type === 'solid' ? theme.Button.color : '#fff',
     // fontSize: 16,
     textAlign: 'center',
     // lineHeight: 20,

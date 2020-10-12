@@ -130,7 +130,7 @@ function CartScreen(props) {
               icon="shopping-bag"
               title={t('empty:text_title_cart')}
               subTitle={t('empty:text_subtitle_cart')}
-              clickButton={() => navigation.navigate(homeTabs.shop)}
+              clickButton={() => navigation.navigate(homeTabs.home_drawer)}
             />
           ) : (
             <>

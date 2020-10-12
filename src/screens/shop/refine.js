@@ -36,11 +36,11 @@ class RefineScreen extends React.Component {
           title: t('catalog:text_sort_popular'),
           query: {orderby: 'popularity'},
         },
-        {
-          key: 'rating',
-          title: t('catalog:text_sort_rating'),
-          query: {orderby: 'rating'},
-        },
+        // {
+        //   key: 'rating',
+        //   title: t('catalog:text_sort_rating'),
+        //   query: {orderby: 'rating'},
+        // },
         {
           key: 'date',
           title: t('catalog:text_latest'),
@@ -101,20 +101,7 @@ class RefineScreen extends React.Component {
   renderAttribute = (item) => {
     const {navigation} = this.props;
 
-    return (
-      <ListItem
-        key={item.get('id')}
-        title={item.get('name')}
-        type="underline"
-        small
-        chevron
-        onPress={() =>
-          navigation.navigate(mainStack.filter_attribute, {
-            attribute: item,
-          })
-        }
-      />
-    );
+
   };
 
   showResult = () => {

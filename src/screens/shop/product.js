@@ -54,6 +54,8 @@ import { handleError } from 'src/utils/error';
 import { fetchProductAttributes, fetchRating } from 'src/modules/product/actions';
 import { fetchVendorDetail } from 'src/modules/vendor/actions';
 import { detailVendorSelector } from 'src/modules/vendor/selectors';
+import {  LocationSelector } from '../../modules/Locator/selector';
+
 
 const { height } = Dimensions.get('window');
 const HEADER_MAX_HEIGHT = height * 0.6;
@@ -124,7 +126,7 @@ class Product extends Component {
         {
             title: 'Mayo',
             image: 'https://lexiscleankitchen.com/wp-content/uploads/2019/04/Homemade-Mayo-683x1024.jpg',
-            value: false
+            value: true
         },
         {
             title: 'Yellow Mustard',
@@ -194,6 +196,8 @@ class Product extends Component {
       dispatch(fetchVendorDetail(vendor_id));
       // this.getStore(vendor_id)
     }
+
+    console.log('this.props.Locator',this.props.Locator.NotiUserId)
   }
 
   componentWillUnmount() {
@@ -203,8 +207,9 @@ class Product extends Component {
   }
 
   addToCart = () => {
-    const { addCart, state: { variation }, t } = this.props;
-    
+    const { addCart, state: { variation }, t ,Locator } = this.props;
+    const NotiId = Locator.NotiUserId;
+    console.log('NotiId',NotiId)
     // console.log('addCart::::::::', addCart)
     const { product ,DATA, DATA2} = this.state;
     const veggies = DATA.filter(x=> x.value == true)
@@ -222,26 +227,26 @@ class Product extends Component {
       } else {
         if (LB == 'Party Trays') {
           alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
-          addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+          addCart(product.get('id'), null, null, NotiId ,() => this.setState({ isAddToCart: true }));
         }
         else if(LB == 'subs' || LB == 'wraps'){
-          addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
+          addCart(product.get('id'), veggies, condiments, NotiId, () => this.setState({ isAddToCart: true }));
         }
         else{
-          addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+          addCart(product.get('id'), null, null, NotiId ,() => this.setState({ isAddToCart: true }));
         }
         
       }
     } else {
       if (LB == 'Party Trays') {
         alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
-        addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+        addCart(product.get('id'), null, null, NotiId,() => this.setState({ isAddToCart: true }));
       }
       else if(LB == 'subs' || LB == 'wraps'){
-        addCart(product.get('id'), veggies, condiments, () => this.setState({ isAddToCart: true }));
+        addCart(product.get('id'), veggies, condiments,NotiId , () => this.setState({ isAddToCart: true }));
       }
       else{
-        addCart(product.get('id'), null, null, () => this.setState({ isAddToCart: true }));
+        addCart(product.get('id'), null, null,NotiId ,() => this.setState({ isAddToCart: true }));
       }
     }
   };
@@ -672,6 +677,7 @@ const mapStateToProps = (state) => {
     lang: languageSelector(state),
     configs: configsSelector(state),
     vendorDetail: detailVendorSelector(state),
+    Locator:LocationSelector(state)
   };
 };
 

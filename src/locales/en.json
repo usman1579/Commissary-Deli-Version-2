@@ -159,7 +159,7 @@
 
     "text_title_contact_store": "Contact Vendor",
     "text_button_contact_store": "Send Message",
-    "text_select_variation": "Please select variations"
+    "text_select_variation": "Please select your options."
   },
   "cart": {
     "text_total": "Total",
@@ -196,10 +196,10 @@
     "text_shipping_store": "{{name}} Shipping"
   },
   "getting": {
-    "text_title_1": "Shopping Smart",
+    "text_title_1": "Order From Anywhere",
     "text_title_2": "Focus UX",
     "text_title_3": "Creative Concept",
-    "text_subtitle_1": "Welcome to OREO Store",
+    "text_subtitle_1": "Have it ready when you get there.",
     "text_subtitle_2": "Personalization of User Experience",
     "text_subtitle_3": "Discovering new horizons"
   },

@@ -52,32 +52,7 @@ class HelpScreen extends React.Component {
               })
             }
           />
-          <ListItem
-            title={t('profile:text_term')}
-            titleProps={titleProps}
-            chevron
-            type="underline"
-            // onPress={() => navigation.navigate(profileStack.term)}
-            onPress={() =>
-              navigation.navigate(mainStack.page, {
-                id: configs.getIn(['term', language]),
-                type: 'page',
-              })
-            }
-          />
-          <ListItem
-            title={t('profile:text_about')}
-            titleProps={titleProps}
-            chevron
-            type="underline"
-            // onPress={() => navigation.navigate(profileStack.about)}
-            onPress={() =>
-              navigation.navigate(mainStack.page, {
-                id: configs.getIn(['about', language]),
-                type: 'page',
-              })
-            }
-          />
+        
           <ListItem
             title={t('profile:text_rate_app')}
             titleProps={titleProps}
