@@ -19,7 +19,7 @@
     "text_product_review_form": "Write review",
     "text_me_screen": "Me",
     "text_account": "My account",
-    "text_orders": "Orders & Returns",
+    "text_orders": "My Orders",
     "text_password": "Change Password",
     "text_address": "Address Book",
     "text_setting": "App Settings",
@@ -218,12 +218,12 @@
     "text_help_info": "Help & Info",
     "text_hotline": "Hotline",
 
-    "text_order": "Orders & Returns",
+    "text_order": "My Orders",
     "text_password": "Password",
     "text_address": "Address Book",
     "text_edit_account": "Edit Account",
 
-    "text_code_order": "Oerder Code: {{code}}",
+    "text_code_order": "Order #: {{code}}",
     "text_time_order": "Order: {{time}}",
     "text_status_order": "Status: ",
 

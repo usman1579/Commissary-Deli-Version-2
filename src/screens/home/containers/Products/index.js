@@ -57,6 +57,8 @@ class Products extends React.Component {
     const Component =
       typeShow === 'list' ? List : typeShow === 'carousel' ? Carousel : Grid;
 
+      console.log(' typeShow', Component)
+
     return (
       <Container disable={disableContainer}>
         <Component

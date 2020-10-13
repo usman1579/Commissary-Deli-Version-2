@@ -68,7 +68,8 @@ const ItemDefault = React.memo((props) => {
   const listStatus = ['instock', 'onbackorder'];
   
   const HandlePartyTray = (id) => {
-    if(LB == 'Party Trays'){
+
+    if(LB == 'Party Trays' || item.categories[0].name == 'Party Trays'){
       alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
       addCart(id)
     }

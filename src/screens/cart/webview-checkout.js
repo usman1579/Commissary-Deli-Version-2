@@ -24,10 +24,9 @@ import {clearCart} from 'src/modules/cart/actions';
 import {API} from 'src/config/api';
 
 import OneSignal from "react-native-onesignal";
-import { NotificationUserId } from '../../modules/Locator/action';
-  
- 
 
+import { NotificationUserId } from '../../modules/Locator/action';
+    
 
 class WebviewCheckout extends Component {
   webview = null;

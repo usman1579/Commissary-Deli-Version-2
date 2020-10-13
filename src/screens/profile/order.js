@@ -22,6 +22,7 @@ import {fromCharCode} from 'src/utils/string';
 import {strDate, objectStatus} from './order/config';
 
 import {margin} from 'src/components/config/spacing';
+import HTMLView from 'react-native-htmlview';
 
 const prepareAddress = (address = {}, countries = fromJS([])) => {
   const selected = countries.find(
@@ -72,22 +73,36 @@ class DetailOrder extends React.Component {
     );
   };
 
+componentDidMount() {
+    const {order} = this.state;
+  fetch('https://mdbsapi.daviserve.com/tests/appOrders.php?order='+order.id)
+  .then((resp)=>{ 
+    return resp.text() 
+  })
+  .then((text)=>{ 
+    console.log(text) 
+
+
+     this.setState({
+            isLoaded: true,
+            htmly: text
+          });
+  })
+}
+
   renderListProduct = () => {
     const {t} = this.props;
-    const {
-      order: {line_items, currency},
-    } = this.state;
+    const {order, htmly} = this.state;
+     var pre = '<table>'
+    var pos = '</table>'
+
     return (
-      <ContainerView title={t('profile:text_info')}>
-        {line_items.map((item, index) => (
-          <ProductItemOrder
-            key={item.id}
-            item={item}
-            lastest={index === line_items.length - 1}
-            style={index === line_items.length - 1 && styles.productLast}
-            currency={currency}
+<ContainerView title={'ORDER DETAILS'}>
+       <HTMLView 
+            value = {htmly}
+       
+             stylesheet={styles}
           />
-        ))}
       </ContainerView>
     );
   };
@@ -212,7 +227,7 @@ class DetailOrder extends React.Component {
             </ContainerView>
           ) : null}
           {this.renderNote()}
-          {this.renderTotal()}
+         
         </ScrollView>
       </ThemedView>
     );
@@ -222,6 +237,8 @@ class DetailOrder extends React.Component {
 const styles = {
   container: {
     flex: 1,
+    lineHeight: .125,
+
   },
   contentFooter: {
     borderBottomWidth: 0,
@@ -247,6 +264,39 @@ const styles = {
   button: {
     paddingHorizontal: 52,
   },
+  dt: {
+    fontWeight: 'bold',
+    margin: 0,
+    padding: 0,
+    height: 0,
+    lineHeight: 5,
+    marginBottom: 8,
+  },
+  dd: {
+    margin: 0,
+    padding: 0,
+    lineHeight: 5,
+    marginBottom: 8,
+  },
+  dl: {
+    marginTop: 20,
+  },
+  p: {
+    marginTop: 10,
+    padding: 0,
+    lineHeight: 5,
+    marginLeft: 200,
+    marginBottom: 8,
+  },
+h3: {
+  fontSize: 17,
+    fontWeight: 'bold',
+    paddingBottom: 80,
+},
+table: {
+  display: 'none',
+},
+
 };
 
 const mapStateToProps = (state) => {

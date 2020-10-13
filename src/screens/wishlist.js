@@ -47,12 +47,12 @@ class WishListScreen extends React.Component {
     const {t, navigation} = this.props;
     if (!data || data.length < 1) {
       return (
-        <Empty
+ <Empty
           icon="heart"
           title={t('empty:text_title_wishlist')}
           subTitle={t('empty:text_subtitle_wishlist')}
           titleButton={t('common:text_go_shopping')}
-          clickButton={() => navigation.navigate(homeTabs.shop)}
+          clickButton={() => navigation.navigate(homeTabs.home_drawer)}
         />
       );
     }
