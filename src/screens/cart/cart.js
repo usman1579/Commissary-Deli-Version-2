@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import values from 'lodash/values';
 import includes from 'lodash/includes';
-import {StyleSheet, View, ActivityIndicator, I18nManager, Alert} from 'react-native';
+import {StyleSheet, View, ActivityIndicator, I18nManager, Alert, Text} from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import {ThemedView, Header, Button, Loading} from 'src/components';
 import {TextHeader} from 'src/containers/HeaderComponent';
@@ -162,9 +162,12 @@ function CartScreen(props) {
                   </View>
                 )}
                 ListFooterComponent={
-                  <Container>
-                    <Coupon />
-                  </Container>
+            <Button
+            style={styles.loginScreenButton}
+              title={"[+] add item"}
+              underlayColor="#f194ff"
+              onPress={() => navigation.navigate(homeTabs.home_drawer)}
+            />
                 }
               />
               <Container style={styles.footerScrollview}>
@@ -204,6 +207,18 @@ const styles = StyleSheet.create({
   },
   footerScrollview: {
     marginVertical: margin.large,
+  },
+  loginScreenButton:{
+    marginRight:100,
+    marginLeft:100,
+   marginTop:20,
+    paddingTop:10,
+    paddingBottom:20,
+    backgroundColor:'#fff',
+    color: '#000',
+    borderRadius:5,
+    borderWidth: 1,
+    borderColor: '#fff'
   },
 });
 

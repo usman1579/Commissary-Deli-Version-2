@@ -229,7 +229,7 @@ class Product extends Component {
           alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
           addCart(product.get('id'), null, null, NotiId ,() => this.setState({ isAddToCart: true }));
         }
-        else if(LB == 'subs' || LB == 'wraps'){
+        else if(LB == 'subs' || LB == 'wraps' || LB == 'breakfast paninis' || LB == 'panini sandwiches'){
           addCart(product.get('id'), veggies, condiments, NotiId, () => this.setState({ isAddToCart: true }));
         }
         else{
@@ -242,7 +242,7 @@ class Product extends Component {
         alert('Please Note: A minimum 1 hour will be needed to prepare this item.')
         addCart(product.get('id'), null, null, NotiId,() => this.setState({ isAddToCart: true }));
       }
-      else if(LB == 'subs' || LB == 'wraps'){
+      else if(LB == 'subs' || LB == 'wraps' || LB == 'breakfast paninis' || LB == 'panini sandwiches'){
         addCart(product.get('id'), veggies, condiments,NotiId , () => this.setState({ isAddToCart: true }));
       }
       else{
@@ -525,7 +525,7 @@ class Product extends Component {
             ) : null}
           {this.showInfoType()}
 
-          {Cat == 'subs' || Cat == 'wraps' ? 
+          {Cat == 'subs' || Cat == 'wraps' || Cat == 'breakfast paninis' || Cat == 'panini sandwiches' ? 
           <>
           {this.Vegetables()}
           {this.Condiments()}

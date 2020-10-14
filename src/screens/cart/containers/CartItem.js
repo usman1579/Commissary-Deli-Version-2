@@ -38,6 +38,8 @@ function CartItem(props) {
     line_subtotal,
   } = item;
   const image = thumb || getUrlImage(thumbnail);
+  
+
   return (
     <ThemeConsumer>
       {({ theme }) => (
@@ -57,18 +59,23 @@ function CartItem(props) {
             style={styles.image}
           />
           <Col style={styles.content}>
+
+
             <View>
               <Text
                 medium
                 onPress={() => goToProduct(product_id)}
                 style={styles.title}>
-                {unescape(name)}
+                {unescape(name).split('-')[0]}
               </Text>
 
               {Object.values(item.variation).map((data, index) =>
+
                 <Text style={{ color: 'black', fontSize: 11 }}>
-                  {data.replace(/-/g,' ').replace('2 00','$2')}
+                    {/*{ data.indexOf('lb')<0 ? data.replace(/-/g,' ').replace('2 00','$2').replace('6','6"').replace('12','12"') : null }*/}
+                    { data.replace(/-/g,' ').replace('2 00','$2').replace('6','6"').replace('12','12"').replace('_','/') }
                 </Text>
+
               )}
 
 
@@ -97,13 +104,8 @@ function CartItem(props) {
                   )}
                 </View>
               }
-              {/* <Row style={styles.viewAttribute}>
-                {Object.values(item.variation).map((data, index) =>
-                 this.renderVariation(data, index),
-                )}
-              </Row> */}
             </View>
-            <Quantity value={quantity} onChange={(value) => updateQuantity(key, value)} />
+            <Quantity style={{ marginTop: 11 }} value={quantity} onChange={(value) => updateQuantity(key, value)} />
           </Col>
           <Text medium>{currencyFormatter(line_subtotal / quantity, currency)}</Text>
         </Row>
@@ -131,6 +133,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: margin.small - 1,
+    fontWeight: 'bold',
   },
   viewAttribute: {
     marginBottom: margin.small,

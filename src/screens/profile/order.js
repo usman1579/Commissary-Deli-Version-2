@@ -292,9 +292,15 @@ h3: {
   fontSize: 17,
     fontWeight: 'bold',
     paddingBottom: 80,
+    color: '#176196',
 },
 table: {
   display: 'none',
+},
+bdi: {
+  fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'right',
 },
 
 };
