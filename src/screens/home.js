@@ -128,8 +128,10 @@ class HomeScreen extends Component {
         <ScrollView
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
-             <Locator/>
+
+             <Locator />
           {config.map((data) => this.renderContainer(data))}
+   
         </ScrollView>
         <ModalHomePopup />
       </ThemedView>

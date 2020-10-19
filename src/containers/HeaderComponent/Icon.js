@@ -8,7 +8,7 @@ const Icon = ({onPress, ...rest}) => {
   const handleClick = onPress ? onPress : () => navigation.goBack();
 
   return (
-    <TouchableOpacity onPress={handleClick} style={styles.container}>
+    <TouchableOpacity onPress={handleClick} style={styles.container, {backgroundColor: '#ffffff73', borderRadius: 8}}>
       <IconComponent name="chevron-left" size={26} isRotateRTL {...rest} />
     </TouchableOpacity>
   );

@@ -209,8 +209,8 @@ const styles = StyleSheet.create({
     marginVertical: margin.large,
   },
   loginScreenButton:{
-    marginRight:100,
-    marginLeft:100,
+    marginRight:450,
+    marginLeft:450,
    marginTop:20,
     paddingTop:10,
     paddingBottom:20,

@@ -462,7 +462,7 @@ class Product extends Component {
             product_id={product.get('id')}
             url={product.get('permalink')}
             name_product={product.get('name')}
-            height={HEADER_MAX_HEIGHT / 2 + 50}
+            height={HEADER_MAX_HEIGHT / 2 + 150}
           />
         }
         footerElement={
@@ -477,7 +477,7 @@ class Product extends Component {
             />
           )
         }
-        heightViewImage={HEADER_MAX_HEIGHT / 2 + 50}>
+        heightViewImage={HEADER_MAX_HEIGHT / 2 + 150}>
         <Container style={styles.container}>
           <View style={styles.viewCategoryRating}>
             <CategoryName product={product} style={styles.textCategory} />

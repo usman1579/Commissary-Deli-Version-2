@@ -26,6 +26,7 @@ import {
 } from 'src/modules/common/selectors';
 import {getProducts, topSellers} from 'src/modules/product/service';
 import {prepareProductItem} from 'src/utils/product';
+import { LocationSelector } from '../../../../modules/Locator/selector';
 
 const initHeader = {
   style: {},
@@ -211,7 +212,10 @@ class ProductList extends Component {
 
     const heading = fields.text_heading ? fields.text_heading : initHeader;
 
-    const listData = data.map(this.prepareProduct);
+   const RData  = data.map(this.prepareProduct);
+   const Loc = this.props.Location.selectedLocation.name ;
+     const listData = RData.filter(x=> x.tags[0].name == Loc)
+    // console.log('listData location', listData )
 
     const headerDisable = !fields.boxed ? 'all' : 'none';
 
@@ -261,6 +265,7 @@ class ProductList extends Component {
 const styles = StyleSheet.create({
   header: {
     paddingTop: 0,
+    height: 5,
   },
 });
 
@@ -274,6 +279,7 @@ const mapStateToProps = (state) => ({
   defaultCurrency: defaultCurrencySelector(state),
   language: languageSelector(state),
   days: daysBeforeNewProductSelector(state),
+  Location:LocationSelector(state)
 });
 
 export default compose(

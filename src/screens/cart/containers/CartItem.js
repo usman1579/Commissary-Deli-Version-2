@@ -42,6 +42,7 @@ function CartItem(props) {
   } = item;
   const image = thumb || getUrlImage(thumbnail);
 
+
   const HideTotal = (line_subtotal, quantity, currency, item) => {
     console.log('item variation length', item.variation.length)
     if (item.variation.length == 0) {
@@ -61,6 +62,7 @@ function CartItem(props) {
     }
 
   }
+
 
   return (
     <ThemeConsumer>
@@ -94,8 +96,8 @@ function CartItem(props) {
               {Object.values(item.variation).map((data, index) =>
 
                 <Text style={{ color: 'black', fontSize: 11 }}>
-                  {/*{ data.indexOf('lb')<0 ? data.replace(/-/g,' ').replace('2 00','$2').replace('6','6"').replace('12','12"') : null }*/}
-                  {data.replace(/-/g, ' ').replace('2 00', '$2').replace('6', '6"').replace('12', '12"').replace('_', '/')}
+                    {/*{ data.indexOf('lb')<0 ? data.replace(/-/g,' ').replace('2 00','$2').replace('6','6"').replace('12','12"') : null }*/}
+                    { data.replace(/-/g,' ').replace('2 00','$2').replace('6','6"').replace('12','12"').replace('_','/') }
                 </Text>
 
               )}
@@ -144,8 +146,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   image: {
-    width: 80,
-    height: 107,
+    width: 210,
+    height: 210,
   },
   content: {
     paddingLeft: padding.big,

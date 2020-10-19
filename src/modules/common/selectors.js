@@ -124,7 +124,7 @@ export const columnProductSelector = createSelector(
     const objCol = listSwitch.find((switchValue) => switchValue.view === data)
       ? listSwitch.find((switchValue) => switchValue.view === data)
       : listSwitch[0];
-    return objCol.col;
+    return 3;
   },
 );
 

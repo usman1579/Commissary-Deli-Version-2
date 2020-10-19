@@ -11,7 +11,7 @@ export const homeDrawer = {
 
 export const homeTabs = {
   home_drawer: 'HomeDrawer',
-  wish_list: 'WishListStack',
+
   cart: 'CartStack',
   me: 'ProfileStack',
 };

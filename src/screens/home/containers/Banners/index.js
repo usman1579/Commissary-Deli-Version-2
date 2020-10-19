@@ -114,8 +114,8 @@ class Banners extends Component {
             <Component
               images={images}
               col={colBanner(layout, images.length)}
-              widthImage={widthValue}
-              heightImage={heightValue}
+              widthImage={40}
+              heightImage={30}
               widthView={widthView}
               radius={radius}
               box={valueBox}

@@ -6,6 +6,7 @@ import { LocationSelector, setLocationSelector } from '../../../modules/Locator/
 import { ScrollView } from 'react-native-gesture-handler';
 import { clearCart } from '../../../modules/cart/actions';
 import { cartSelector } from '../../../modules/cart/selectors';
+import { isLoginSelector, authSelector } from '../../../modules/auth/selectors';
 
 
 
@@ -53,13 +54,14 @@ class Locator extends Component {
     }
 
     render() {
-        const { Locator } = this.props;
-        const Loc = Locator.Location;        
+        const { Locator ,isLogin} = this.props;
+        const Loc = Locator.Location;      
         return (
             <>
                 <View >
                     <TouchableOpacity
-                        style={{ height: 40, paddingVertical: 2, paddingHorizontal: 20, borderRadius: 5, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', alignSelf: "center", marginVertical: 10 }}
+                     disabled={isLogin}
+                        style={{ height: 40, paddingVertical: 2,opacity:isLogin ? 0.3 : 1,paddingHorizontal: 20, borderRadius: 5, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', alignSelf: "center", marginVertical: 10 }}
                         onPress={() => this.setState({
                             visible: true
                         })}>
@@ -119,6 +121,7 @@ const mapStateToProps = (state) => ({
     Locator: LocationSelector(state),
     selectedLocation: setLocationSelector(state),
     data: cartSelector(state).toJS(),
+    isLogin:isLoginSelector(state) 
 });
 
 export default connect(mapStateToProps)(Locator);

@@ -108,7 +108,7 @@ const ItemDefault = React.memo((props) => {
                 <Badge value={t('common:text_sale')} status="warning" />
               ) : null}
             </View>
-            <WishListIcon product_id={id} />
+            
           </View>
           {configs.get('toggleAddButtonProduct') &&
             configs.get('toggleCheckout') &&
